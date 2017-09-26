@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "791026444214",
+    "firebase_url": "https://appone-e1b16.firebaseio.com",
+    "project_id": "appone-e1b16",
+    "storage_bucket": "appone-e1b16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791026444214:android:24758f8dca0c15bf",
+        "android_client_info": {
+          "package_name": "com.appone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "791026444214-25aoj68j2gfhaeuj2qq8pt6q1b356t7h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWTQg2AN-hnc_Del5VCPJO9mfDxfZ-RL0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

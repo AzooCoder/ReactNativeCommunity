@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import {Splash} from "./pages/Splash";
 import {DrawerLayout} from "./components/DrawerLayout";
 import {Category} from "./pages/Category";
+import FIrebaseContainer from "./common/FIrebaseContainer";
 
 
 const TabNav = TabNavigator({
@@ -46,10 +47,32 @@ const MainNavigator = StackNavigator({
 
 
 export class App extends Component {
+    state = {
+      myData:{}
+    };
+    componentDidMount(){
+        let firebase = new FIrebaseContainer();
+        firebase.savePosts({
+            title:"TEST",
+            abc:"Hello"
+        });
+
+        firebase.getFirebase() .database()
+            .ref('posts/1234').on("value",this.onData);
+    }
+
+    onData = (snapshot) =>{
+        /*this.setState({
+            myData:snapshot.val()
+        });
+        */
+        console.log(snapshot.val());
+    };
+
     render() {
         return (
             <View style={{flex:1}}>
-                <MainNavigator />
+                {/*<Text>{this.state.myData}</Text>*/}
             </View>
         );
     }
