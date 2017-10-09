@@ -10,7 +10,7 @@ export class Splash extends Component {
     componentDidMount(){
         const {navigate} = this.props.navigation;
         setTimeout(()=>{
-            navigate("Home")
+            navigate("SignIn")
         },4000);
     }
 

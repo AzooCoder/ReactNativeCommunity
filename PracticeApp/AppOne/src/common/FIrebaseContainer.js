@@ -4,23 +4,40 @@ export default class FIrebaseContainer{
     firebase;
     constructor(){
         const configurationOptions = {
-            persistence: true
+            persistence: true,
+            debug:false
         };
         this.firebase = new RNFirebase(configurationOptions);
 
 
-        this.firebase.auth().signInAnonymously()
+        /*this.firebase.auth().signInAnonymously()
             .then((user) => {
                 console.log("AUTH",user.isAnonymous);
-            });
+            });*/
+    }
+
+    getAuth(){
+        return this.firebase.auth();
     }
 
 
-    savePosts(data){
+    signIn(email,password,success,fail){
+        this.firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((user) => {
+                success(user);
+                console.log('User successfully logged in', user)
+            })
+            .catch((err) => {
+                fail(err);
+                console.error('User signin error', err);
+            });
+    }
+
+    saveProduct(product){
         this.firebase
             .database()
-            .ref('posts/1234')
-            .set(data);
+            .ref('products')
+            .push().set(product);
     }
 
     getFirebase(){

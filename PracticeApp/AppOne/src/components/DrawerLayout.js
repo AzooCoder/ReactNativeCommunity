@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Dimensions, Text, TouchableOpacity, View} from 'react-native';
+import {Dimensions, Text, TouchableOpacity, View,ToastAndroid} from 'react-native';
+import FIrebaseContainer from "../common/FIrebaseContainer";
 
 export class DrawerLayout extends Component {
 
@@ -23,6 +24,17 @@ export class DrawerLayout extends Component {
                 })}
                 {this.drawerItem("Category",()=>{
                     navigate("Category")
+                })}
+                {this.drawerItem("Add Product",()=>{
+                    navigate("AddProduct")
+                })}
+                {this.drawerItem("Sign Out",()=>{
+                    (new FIrebaseContainer()).getAuth().signOut().then(() => {
+                        navigate("SignIn");
+                    }).catch((err) => {
+                            ToastAndroid.show('There was an error while signing out!', ToastAndroid.SHORT);
+                        });
+
                 })}
             </View>
         );

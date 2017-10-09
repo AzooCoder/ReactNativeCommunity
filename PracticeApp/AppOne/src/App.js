@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
 import {DrawerNavigator, StackNavigator, TabNavigator} from "react-navigation";
 import Home from './pages/Home';
 import {Splash} from "./pages/Splash";
 import {DrawerLayout} from "./components/DrawerLayout";
 import {Category} from "./pages/Category";
 import FIrebaseContainer from "./common/FIrebaseContainer";
+import {Text, TouchableOpacity, View} from "react-native";
+import {SignIn} from "./pages/SignIn";
+import {AddProduct} from "./pages/AddProduct";
 
 
 const TabNav = TabNavigator({
@@ -31,9 +33,11 @@ const DrawerNav = DrawerNavigator({
 
 const MainNavigator = StackNavigator({
     Splash:{screen:Splash},
+    SignIn:{screen:SignIn},
+    AddProduct:{screen:AddProduct},
     DrawerApp:{screen:DrawerNav}
 },{
-    initialRouteName:"DrawerApp",
+    initialRouteName:"SignIn",
     navigationOptions: ({navigation}) => ({
         headerLeft:(
             <TouchableOpacity onPress={()=>{
@@ -51,14 +55,14 @@ export class App extends Component {
       myData:{}
     };
     componentDidMount(){
-        let firebase = new FIrebaseContainer();
+       /* let firebase = new FIrebaseContainer();
         firebase.savePosts({
             title:"TEST",
             abc:"Hello"
         });
 
         firebase.getFirebase() .database()
-            .ref('posts/1234').on("value",this.onData);
+            .ref('posts/1234').on("value",this.onData);*/
     }
 
     onData = (snapshot) =>{
@@ -72,7 +76,7 @@ export class App extends Component {
     render() {
         return (
             <View style={{flex:1}}>
-                {/*<Text>{this.state.myData}</Text>*/}
+               <MainNavigator/>
             </View>
         );
     }
